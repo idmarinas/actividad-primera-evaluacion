@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-	<footer class="p-14 bg-gold-sand-700 text-gold-sand-50 border-t-gold-sand-700 border-t shadow-md">
+	<footer class="pt-14 pb-12 px-14 bg-gold-sand-700 text-gold-sand-50 border-t-gold-sand-700 border-t shadow-md">
 		<div class="container mx-auto flex flex-col">
 			<div class="flex flex-row gap-10">
 				<div class="flex flex-col gap-2">
