@@ -1,6 +1,7 @@
 <script setup>
 import Input from '@/components/forms/input.vue'
 import Button from '@/components/forms/button.vue'
+import Logo from '@/components/icons/logo.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
@@ -10,7 +11,7 @@ import { RouterLink } from 'vue-router'
 			<div class="flex flex-row gap-10">
 				<div class="flex flex-col gap-2">
 					<div class="flex items-center gap-4">
-						<img alt="Logo MaderAvilés" src="/src/assets/logo.svg" width="120" class="rounded-lg">
+						<Logo width="120" />
 						<span class="text-5xl">MaderAvilés</span>
 					</div>
 					<div class="grid grid-cols-3 gap-6 mx-auto p-4">
@@ -80,7 +81,7 @@ import { RouterLink } from 'vue-router'
 		@apply text-gold-sand-50;
 
 		&:hover {
-			@apply text-gold-sand-100;
+			@apply text-gold-sand-200;
 		}
 	}
 </style>
