@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+	@apply antialiased;
+}
+
+a {
+	@apply text-gold-sand-600;
+
+	&:hover {
+		@apply text-gold-sand-700;
+	}
+}
