@@ -1,1 +1,0 @@
-import{u as o,s as a,c as s,o as r}from"./index-C_qxR7Qo.js";const _={__name:"Inicio",setup(c){const e=o(),{title:t}=a(e);return t.value="Portada",(n,l)=>(r(),s("article",null," Portada "))}};export{_ as default};
