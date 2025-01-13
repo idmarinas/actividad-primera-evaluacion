@@ -13,18 +13,18 @@ import Portada from '@/components/icons/portada.vue'
 			<nav class="w-full">
 				<ul class="flex flex-row gap-7">
 					<li>
-						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'inicio' }">
+						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'home' }">
 							<Portada width="32" /> Portada
 						</RouterLink>
 					</li>
 					<li class="flex-1"></li>
 					<li>
-						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'piezas' }">
+						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'pieces_list' }">
 							<Pieza width="32" /> Piezas
 						</RouterLink>
 					</li>
 					<li>
-						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'pedidos_lista' }">
+						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'order_list' }">
 							<Pedidos width="32" /> Pedidos
 						</RouterLink>
 					</li>

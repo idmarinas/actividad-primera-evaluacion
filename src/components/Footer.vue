@@ -31,9 +31,9 @@ import { RouterLink } from 'vue-router'
 					<div class="w-36 flex flex-col gap-2">
 						<div class="font-bold uppercase pb-3">Explora</div> 
 						
-						<RouterLink :to="{ name: 'inicio' }">Inicio</RouterLink>
-						<RouterLink :to="{ name: 'pedidos_lista' }">Pedidos</RouterLink>
-						<RouterLink :to="{ name: 'piezas' }">Piezas</RouterLink>
+						<RouterLink :to="{ name: 'home' }">Inicio</RouterLink>
+						<RouterLink :to="{ name: 'order_list' }">Pedidos</RouterLink>
+						<RouterLink :to="{ name: 'pieces_list' }">Piezas</RouterLink>
 					</div>
 					
 					<div class="w-36 flex flex-col gap-2">
