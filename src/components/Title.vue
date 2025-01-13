@@ -1,7 +1,7 @@
 <script setup>
 import { usePageTitleStore } from '@/stores/page-title'
 import { storeToRefs } from 'pinia';
-import { computed, watch } from 'vue';
+import { watch } from 'vue';
 
 const store = usePageTitleStore()
 const { title } = storeToRefs(store)
