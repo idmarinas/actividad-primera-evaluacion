@@ -7,6 +7,9 @@ const router = createRouter({
       path: '/',
       name: 'inicio',
       component: () => import('../views/Inicio.vue'),
+			meta: { 
+				breadcrum: { label: 'Portada', parent: null } 
+			}
     },
     {
       path: '/acerca',
@@ -15,6 +18,9 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Acerca.vue'),
+			meta: { 
+				breadcrum: { label: 'Acerca de', parent: 'inicio' } 
+			}
     },
 		{
 			path: '/pedidos',
@@ -23,18 +29,28 @@ const router = createRouter({
 					path: '',
 					name: 'pedidos_lista',
 					component: () => import('../views/pedidos/Lista.vue'),
+					meta: { 
+						breadcrum: { label: 'Lista de pedidos', parent: 'inicio' } 
+					}
 				},
 				{
 					path: 'detalles/:id',
 					name: 'pedidos_detalles',
-					component: () => import('../views/pedidos/Detalles.vue')
+					component: () => import('../views/pedidos/Detalles.vue'),
+					props: true,
+					meta: { 
+						breadcrum: { label: 'Pedido', parent: 'pedidos_lista' } 
+					}
 				}
 			]
 		},
 		{
 			path: '/piezas',
 			name: 'piezas',
-			component: () => import('../views/Piezas.vue')
+			component: () => import('../views/Piezas.vue'),
+			meta: { 
+				breadcrum: { label: 'Piezas', parent: 'inicio' } 
+			}
 		}
   ],
 })
