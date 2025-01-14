@@ -8,9 +8,9 @@ import { RouterLink } from 'vue-router'
 <template>
 	<footer class="pt-14 pb-12 px-14 bg-gold-sand-700 text-gold-sand-50 border-t-gold-sand-700 border-t shadow-md">
 		<div class="container mx-auto flex flex-col">
-			<div class="flex flex-row gap-10">
+			<div class="flex flex-col md:flex-row gap-10">
 				<div class="flex flex-col gap-2">
-					<div class="flex items-center gap-4">
+					<div class="flex items-center flex-col md:flex-row gap-4">
 						<Logo width="120" />
 						<span class="text-5xl">MaderAvilés</span>
 					</div>
@@ -27,7 +27,7 @@ import { RouterLink } from 'vue-router'
 					</div>
 				</div>
 
-				<div class="flex-1 flex flex-row gap-5 text-nowrap text-center">
+				<div class="flex-1 grid grid-cols-2 md:flex md:flex-row gap-5 text-nowrap text-center">
 					<div class="w-36 flex flex-col gap-2">
 						<div class="font-bold uppercase pb-3">Explora</div> 
 						
@@ -53,7 +53,7 @@ import { RouterLink } from 'vue-router'
 							<a href="#">Términos de uso</a>
 					</div>
 
-					<div class="flex-1 flex flex-col gap-2">
+					<div class=" col-span-full md:flex-1 flex flex-col gap-2">
 							<div class="font-bold uppercase pb-3">Boletín</div>
 							<p class="">Suscríbase a nuestro boletín.</p>
 							<form class="flex items-center">
