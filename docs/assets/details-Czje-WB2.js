@@ -1,0 +1,1 @@
+import{u as r,s as a}from"./index-Bv5PZR0w.js";const c={__name:"details",props:{id:String},setup(e){const t=e,s=r(),{title:o}=a(s);return o.value=`Pedido nº ${t.id}`,(i,n)=>" Detalles del pedido "}};export{c as default};
