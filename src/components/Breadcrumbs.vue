@@ -45,7 +45,7 @@ function getParent(link) {
 			<template v-for="(item, index) in routes" :key="item.name">
 				<li>
 					<template v-if="index !== routes.length - 1">
-						<RouterLink v-if="item.name === 'inicio'" :to="item.path">
+						<RouterLink v-if="item.name === 'home'" :to="item.path">
 							<Portada width="21" />
 							<span class="sr-only">{{ item.meta.breadcrum.label }}</span>
 						</RouterLink>
@@ -55,8 +55,8 @@ function getParent(link) {
 					</template>
 					<template v-else>
 						<span>
-							<Portada v-show="item.name === 'inicio'" width="21" />
-							<span :class="{ 'sr-only': item.name === 'inicio' }" class="text-xs">{{ item.meta.breadcrum.label }}</span>
+							<Portada v-show="item.name === 'home'" width="21" />
+							<span :class="{ 'sr-only': item.name === 'home' }" class="text-xs">{{ item.meta.breadcrum.label }}</span>
 						</span>
 					</template>
 				</li>
