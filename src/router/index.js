@@ -11,17 +11,6 @@ const router = createRouter({
 				breadcrum: { label: 'Portada', parent: null } 
 			}
     },
-    {
-      path: '/acerca',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/about.vue'),
-			meta: { 
-				breadcrum: { label: 'Acerca de', parent: 'home' } 
-			}
-    },
 		{
 			path: '/pedidos',
 			children: [
