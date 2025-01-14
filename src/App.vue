@@ -12,7 +12,7 @@ import Title from '@/components/Title.vue'
 
 	<main class="flex-grow container mx-auto p-4 border-gold-sand-700 border-x shadow-2xl shadow-gold-sand-700">
 		<Breadcrumbs />
-		<div class="prose prose-gold-sand max-w-none md:prose-lg lg:prose-xl dark:prose-invert mx-auto px-5">
+		<div class="prose prose-gold-sand max-w-none md:prose-lg lg:prose-xl dark:prose-invert mx-auto md:px-5">
 			<Title />
 			<RouterView />
 		</div>
