@@ -23,7 +23,7 @@ const router = createRouter({
 					}
 				},
 				{
-					path: 'detalles/:id',
+					path: 'detalles/:id(\\d+)',
 					name: 'order_details',
 					component: () => import('../views/orders/details.vue'),
 					props: true,
@@ -45,7 +45,12 @@ const router = createRouter({
 					}
 				}
 			]
-		}
+		},
+		{ 
+			path: '/:pathMatch(.*)*', 
+			name: 'not_found', 
+			redirect: { name: 'home', params: {} }
+		},
   ],
 })
 
