@@ -23,13 +23,32 @@ const router = createRouter({
 					}
 				},
 				{
+					path: 'crear',
+					name: 'order_add',
+					component: ()  => import('../views/orders/add.vue'),
+					meta: {
+						breadcrum: { label: 'Crear pedido', parent: 'order_list' }
+					}
+				},
+				{
 					path: 'detalles/:id(\\d+)',
 					name: 'order_details',
 					component: () => import('../views/orders/details.vue'),
 					props: true,
 					meta: { 
 						breadcrum: { label: 'Pedido', parent: 'order_list' } 
-					}
+					},
+					children: [
+						{
+							path: 'editar',
+							name: 'order_edit',
+							component: () => import('../views/orders/add.vue'),
+							props: true,
+							meta: {
+								breadcrum: { label: 'Editar', parent: 'order_details' }
+							}
+						}
+					]
 				}
 			]
 		},
