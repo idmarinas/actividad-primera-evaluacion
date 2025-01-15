@@ -25,6 +25,10 @@ if (dataInitialized === null || dataInitialized === 'false') {
 			let piece = useGenerateFakePiece(e+i)
 			piece.order = order.id
 
+			if (order.served) {
+				piece.cut = true
+			}
+
 			defaultPieces.push(piece)
 		}
 
