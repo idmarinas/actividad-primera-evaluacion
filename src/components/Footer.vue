@@ -64,7 +64,7 @@ import { RouterLink } from 'vue-router'
 									placeholder="Introduzca su dirección de correo electrónico" 
 									required 
 								/>
-								<Button type="submit" class="rounded-r-lg flex-initial">Suscríbase</Button>
+								<Button type="submit" class="rounded-r-lg flex-initial py-2">Suscríbase</Button>
 							</form>
 					</div>
 				</div>
