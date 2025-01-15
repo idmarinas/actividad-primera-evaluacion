@@ -38,7 +38,7 @@ titleStore.title = 'Lista de piezas'
 
 <template>
 	<div class="flex flex-row justify-end">
-		<Button button-style="success" class="rounded-md inline-flex gap-2"><Add width="32" /> <span>Añadir pieza</span></Button>
+		<Button button-style="success" class="rounded-md inline-flex gap-2 items-center"><Add width="24" /> <span>Añadir pieza</span></Button>
 	</div>
 
 	<table>
@@ -65,7 +65,7 @@ titleStore.title = 'Lista de piezas'
 				<td><Badge :style="item.cut ? 'success' : 'danger'">{{ item.cut ? 'Sí' : 'No' }}</Badge></td>
 
 				<td class="h-full flex items-center justify-center md:justify-end gap-2">
-					<RouterLink :to="{ name: 'order_edit', params: { id: item.order }}"><Edit /></RouterLink>
+					<!-- <RouterLink :to="{ name: 'order_edit', params: { id: item.order }}"><Edit /></RouterLink> -->
 					<Del @click="openModal(item)" />
 				</td>
 			</tr>
