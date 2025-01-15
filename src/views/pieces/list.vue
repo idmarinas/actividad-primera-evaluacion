@@ -65,7 +65,7 @@ titleStore.title = 'Lista de piezas'
 				<td><Badge :style="item.cut ? 'success' : 'danger'">{{ item.cut ? 'Sí' : 'No' }}</Badge></td>
 
 				<td class="h-full flex items-center justify-center md:justify-end gap-2">
-					<!-- <RouterLink :to="{ name: 'order_edit', params: { id: item.order }}"><Edit /></RouterLink> -->
+					<RouterLink :to="{ name: 'order_edit', params: { id: item.id }}"><Edit /></RouterLink>
 					<Del @click="openModal(item)" />
 				</td>
 			</tr>
