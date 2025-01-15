@@ -20,7 +20,7 @@ const props = defineProps({
 const store = useOrdersStore()
 
 const order = ref(store.find(props.id))
-order.value.served = false
+order.value.served = order.value.serverd === undefined ? false : true
 
 function generateOrderId() {
 	order.value.id = store.generateOrderId()
