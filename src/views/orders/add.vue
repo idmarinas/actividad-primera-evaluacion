@@ -82,15 +82,15 @@ function validate() {
 	}
 
 	// Validar la fecha
-	const date = new Date(order.value.dateOrder)
+	const date = new Date(order.value.orderDate)
 
 	if (isNaN(date.getTime()) || new Date().getTime() < date.getTime()) {
-		formErrors.value.dateOrder = [
+		formErrors.value.orderDate = [
 			'La fecha no tiene un formato válido',
 			'La fecha puede que sea posterior a la fecha actual'
 		]
 	} else {
-		delete formErrors.value.dateOrder
+		delete formErrors.value.orderDate
 	}
 
 	// Validar las piezas
@@ -142,7 +142,7 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 		
 		<div class="flex gap-3 items-center">
 			<label for="order_date">Fecha pedido</label>
-			<Input :error="formErrors?.dateOrder?.length > 0" type="datetime-local" class="rounded-lg flex-1" id="order_date" v-model="order.dateOrder" />
+			<Input :error="formErrors?.orderDate?.length > 0" type="datetime-local" class="rounded-lg flex-1" id="order_date" v-model="order.orderDate" />
 		</div>
 		<div class="flex gap-3 items-center">
 			<label>Procesado</label>
