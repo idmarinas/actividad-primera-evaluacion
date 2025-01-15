@@ -8,7 +8,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
 	base: '/actividad-primera-evaluacion/',
 	build: {
-		outDir: 'docs/'
+		outDir: 'docs/',
+		sourcemap: true,
 	},
   plugins: [
     vue(),
