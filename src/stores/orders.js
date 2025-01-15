@@ -35,7 +35,11 @@ export const useOrdersStore = defineStore('orders', () => {
 	const pieces = usePiecesStore()
 
 	function process(order) {
-		let total = order.pieces.length
+		let total = order.pieces?.length || 0
+		if (total === 0) {
+			return 0
+		}
+
 		let completed  = order.pieces.filter(item => item.cut === true)?.length || 0
 
 		return completed / total
@@ -99,7 +103,13 @@ export const useOrdersStore = defineStore('orders', () => {
 		delete order.pieces
 
 		// Primero se elimina para guardar el nuevo
-		remove(order)
+		
+		const index = state.state.indexOf(order)
+
+		if (index > -1) {
+			state.state.splice(index, 1)
+		}
+
 		state.state.push(order)
 
 		save()
