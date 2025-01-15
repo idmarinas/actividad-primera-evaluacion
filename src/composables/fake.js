@@ -37,3 +37,7 @@ export function useGenerateFakePiece(seed = 0) {
 export function useRandomInt(min = 1, max = 10) {
 	return faker.number.int({min, max})
 }
+
+export function useRandomId() {
+	return faker.number.int()
+}
