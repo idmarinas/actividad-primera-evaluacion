@@ -32,13 +32,16 @@ const router = createRouter({
 				},
 				{
 					path: 'detalles/:id(\\d+)',
-					name: 'order_details',
-					component: () => import('../views/orders/details.vue'),
-					props: true,
-					meta: { 
-						breadcrum: { label: 'Pedido', parent: 'order_list' } 
-					},
 					children: [
+						{
+							path: '',
+							name: 'order_details',
+							component: () => import('../views/orders/details.vue'),
+							props: true,
+							meta: { 
+								breadcrum: { label: 'Pedido', parent: 'order_list' } 
+							}
+						},
 						{
 							path: 'editar',
 							name: 'order_edit',
