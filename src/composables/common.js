@@ -20,9 +20,9 @@ export function useStorateJsonParse(name) {
 }
 
 export const useDateOptions = { 
-	weekday: 'short',
+	weekday: 'long',
 	year: 'numeric',
-	month: 'short',
+	month: 'long',
 	day: 'numeric',
 	hour: 'numeric',
 	minute: 'numeric',
