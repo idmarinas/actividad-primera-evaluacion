@@ -34,9 +34,9 @@ titleStore.title = 'Lista de pedidos'
 
 <template>
 	<div class="flex flex-row justify-end">
-		<RouterLink :to="{ name: 'order_add' }" class="not-prose">
-			<Button button-style="success" class="rounded-lg" :icon="true"><Add width="24" /> <span>Crear pedido</span></Button>
-		</RouterLink>
+		<Button button-style="success" class="rounded-lg" :icon="true" :as-route="{ name: 'order_add' }">
+			<Add width="24" /> <span>Crear pedido</span>
+		</Button>
 	</div>
 	<table>
 		<thead>

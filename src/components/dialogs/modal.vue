@@ -28,7 +28,7 @@ defineProps({
 				<div class="flex justify-end gap-3">
 					<slot name="actions" />
 					<div class="flex-1"></div>
-					<Button class="flex-none rounded-md" @click="$emit('close')">Cerrar</Button>
+					<Button class="flex-none rounded-md" @click="$emit('close')" :icon="true"><Close width="24" /> <span>Cerrar</span></Button>
 				</div>
 			</dialog>
 		</div>
