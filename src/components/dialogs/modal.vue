@@ -17,7 +17,7 @@ defineProps({
 				class="mx-1 md:mx-0 p-3 md:p-6 prose prose-gold-sand transition-all duration-300" 
 				:open="opened"
 			>
-				<Button id="modal-button-close" class="absolute top-1 right-1 cursor-pointer rounded-md" @click="$emit('close')">
+				<Button id="modal-button-close" class="absolute top-2 right-2 rounded-lg" :icon="true" @click="$emit('close')">
 					<Close width="24" />
 				</Button>
 
