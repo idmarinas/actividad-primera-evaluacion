@@ -2,7 +2,7 @@
 import Input from '@/components/forms/input.vue'
 import Button from '@/components/forms/button.vue'
 import Add from '@/components/icons/add.vue'
-import AddPiece from '../pieces/add.vue'
+import AddPiece from './piece.vue'
 import Alert from '@/components/dialogs/alert.vue'
 
 import { useOrdersStore } from '@/stores/orders'

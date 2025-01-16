@@ -117,7 +117,7 @@ pageTitle.title = order.client
 					</span>
 					El pedido {{ modal.item.served ? 'ya' : 'no' }} se ha entregado
 				</p>
-				<Alert type="warning">Esto borrara el pedido así como las piezas asociadas al mismo y no es posible recuperar el pedido.</Alert>
+				<Alert type="warning">Esto borrara el pedido así como las ({{ modal.item.pieces?.length }}) piezas, cortadas o no, asociadas al mismo y no es posible recuperar el pedido.</Alert>
 			</template>
 
 			<template #actions>
