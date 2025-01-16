@@ -47,6 +47,14 @@ function canAddPieces() {
 	return ! (order.value.id === undefined)
 }
 
+const formErrors = ref({
+	invalid: [],
+	id: [],
+	client: [],
+	orderDate: [], 
+	pieces: []
+})
+
 function addPiece() {
 	order.value.pieces.push({
 		order: order.value.id,
@@ -54,22 +62,60 @@ function addPiece() {
 		bothFaces: false,
 		cut: false
 	})
+
+	formErrors.value.pieces.push({
+		id:[],
+		dimensions: {
+			length: [],
+			width: [],
+			thickness: []
+		},
+		color: []
+	})
 }
 
-const formErrors = ref({invalid: []})
+const isValid = computed(() => {
+	let valid = true
 
-const isValid = computed((s) => Object.keys(formErrors.value).length < 1)
+	for(let key in formErrors.value) {
+		if (key === 'pieces') {
+			formErrors.value[key].forEach((value) => {
+				for(let k in value) {
+					if (k === 'dimensions') {
+						for(let d in value[k]) {
+							if (value[k][d].length > 0) {
+								valid = false
+							}
+						}
+					}
+
+					if (value[k].length > 0) {
+						valid = false
+					}
+				}
+			})
+
+			continue
+		} 
+		
+		if (formErrors.value[key].length > 0) {
+			valid = false
+		}
+	}
+
+	return valid
+})
 
 function validate() {
 	delete formErrors.value.invalid
 
 	// Validar si existe un ID
-	if (order.value.id === undefined) {
+	if (order.value.id === undefined || !Number.isInteger(order.value.id)) {
 		formErrors.value.id = [
-			'Genera un Número de pedido usando el botón de "Generar"'
+			'Genera un Número de pedido usando el botón de "Generar" y consta de números enteros',
 		]
 	} else {
-		delete formErrors.value.id
+		formErrors.value.id = []
 	}
 
 	// Validar cliente
@@ -78,7 +124,7 @@ function validate() {
 			'Se debe poner el nombre y apellidos de cliente y debe tener como mínimo 5 letras'
 		]
 	} else {
-		delete formErrors.value.client
+		formErrors.value.client = []
 	}
 
 	// Validar la fecha
@@ -86,11 +132,10 @@ function validate() {
 
 	if (isNaN(date.getTime()) || new Date().getTime() < date.getTime()) {
 		formErrors.value.orderDate = [
-			'La fecha no tiene un formato válido',
-			'La fecha puede que sea posterior a la fecha actual'
+			'La fecha no tiene un formato válido y no puede ser una fecha posterior a la fecha actual'
 		]
 	} else {
-		delete formErrors.value.orderDate
+		formErrors.value.orderDate = []
 	}
 
 	// Validar las piezas
@@ -99,7 +144,44 @@ function validate() {
 			'Se debe poner como mínimo una pieza en el pedido'
 		]
 	} else {
-		delete formErrors.value.piecesEmpty
+		formErrors.value.piecesEmpty = []
+	}
+
+	if (order.value.pieces.length > 0) {
+		// Se comprueban todos los valores
+		order.value.pieces.forEach((value, index) => {
+			if (value.id === undefined || !Number.isInteger(value.id)) {
+				formErrors.value.pieces[index].id = [
+					'Genera un Número para pieza usando el botón de "Generar"'
+				]
+			} else {
+				formErrors.value.pieces[index].id = []
+			}
+
+			if (value.dimensions.length === undefined || !Number.isInteger(value.dimensions.length) || value.dimensions.length < 1) {
+				formErrors.value.pieces[index].dimensions.length = [
+					'El largo de la pieza tiene que estar definido ser un número entero y mayor que 0',
+				]
+			} else {
+				formErrors.value.pieces[index].dimensions.length = []
+			}
+
+			if (value.dimensions.width === undefined || !Number.isInteger(value.dimensions.width) || value.dimensions.width < 1) {
+				formErrors.value.pieces[index].dimensions.width = [
+					'El ancho de la pieza tiene que estar definido ser un número entero y mayor que 0',
+				]
+			} else {
+				formErrors.value.pieces[index].dimensions.width = []
+			}
+
+			if (value.dimensions.thickness === undefined || !Number.isInteger(value.dimensions.thickness) || value.dimensions.thickness < 1) {
+				formErrors.value.pieces[index].dimensions.thickness = [
+					'El grosor de la pieza tiene que estar definido ser un número entero y mayor que 0',
+				]
+			} else {
+				formErrors.value.pieces[index].dimensions.thickness = []
+			}
+		})
 	}
 }
 
@@ -117,8 +199,8 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 		<template #title>
 			El formulario contiene errores
 		</template>
-		<div v-for="messages in formErrors" class=" space-y-1">
-			<template v-for="msg in messages">{{ msg }}<br /></template>
+		<div v-for="(messages, error) in formErrors" class=" space-y-1">
+			<template v-if="error !== 'pieces'" v-for="msg in messages"><div>{{ msg }}</div></template>
 		</div>
 	</Alert>
 
@@ -130,19 +212,19 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 			<Input v-if="isEdit" type="number" readonly class="rounded-lg flex-1" id="order_id" v-model="order.id" />
 			<template v-else>
 				<div class="flex-1 flex gap-0">
-					<Input :error="formErrors?.id?.length > 0" type="number" readonly class="rounded-l-lg flex-1" id="order_id" v-model="order.id" />
+					<Input :error="formErrors.id.length > 0" type="number" readonly class="rounded-l-lg flex-1" id="order_id" v-model="order.id" />
 					<Button class="rounded-r-lg" @click="generateOrderId()" :disabled="order.id !== undefined">Generar</Button>
 				</div>
 			</template>
 		</div>
 		<div class="flex gap-3 items-center">
 			<label for="order_client">Cliente</label>
-			<Input :error="formErrors?.client?.length > 0" type="text" class="rounded-lg flex-1" id="order_client" v-model="order.client" />
+			<Input :error="formErrors.client.length > 0" type="text" class="rounded-lg flex-1" id="order_client" v-model="order.client" />
 		</div>
 		
 		<div class="flex gap-3 items-center">
 			<label for="order_date">Fecha pedido</label>
-			<Input :error="formErrors?.orderDate?.length > 0" type="datetime-local" class="rounded-lg flex-1" id="order_date" v-model="order.orderDate" />
+			<Input :error="formErrors.orderDate.length > 0" type="datetime-local" class="rounded-lg flex-1" id="order_date" v-model="order.orderDate" />
 		</div>
 		<div class="flex gap-3 items-center">
 			<label>Procesado</label>
@@ -186,6 +268,7 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 					v-model:color="piece.color"
 					v-model:both-faces="piece.bothFaces"
 					v-model:cut="piece.cut"
+					v-model:errors="formErrors.pieces[index]"
 				/>
 			</div>
 		</div>
