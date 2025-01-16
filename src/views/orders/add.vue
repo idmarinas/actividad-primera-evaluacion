@@ -55,15 +55,12 @@ const formErrors = ref({
 	pieces: []
 })
 
-function addPiece() {
-	order.value.pieces.push({
-		order: order.value.id,
-		dimensions: {},
-		bothFaces: false,
-		cut: false
-	})
+function addEmptyPieceError(index){
+	if (formErrors.value.pieces[index] !== undefined) {
+		return
+	}
 
-	formErrors.value.pieces.push({
+	formErrors.value.pieces[index] = {
 		id:[],
 		dimensions: {
 			length: [],
@@ -71,6 +68,15 @@ function addPiece() {
 			thickness: []
 		},
 		color: []
+	}
+}
+
+function addPiece() {
+	order.value.pieces.push({
+		order: order.value.id,
+		dimensions: {},
+		bothFaces: false,
+		cut: false
 	})
 }
 
@@ -259,6 +265,7 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 
 		<div class="col-span-full grid grid-cols-1 divide-y-2 divide-gold-sand-500">
 			<div v-for="(piece, index) in order.pieces" :key="index" class="grid grid-cols-3 gap-3 py-3">
+				{{ addEmptyPieceError(index) }}
 				<AddPiece 
 					:isEdit="isEdit"
 					v-model:id="piece.id" 
@@ -277,7 +284,7 @@ pageStore.title = isEdit ? 'Editar pedido' : 'Crear pedido'
 			<div class="flex-1"></div>
 			<Button class="rounded-lg" @click="validate()">Validar datos</Button>
 
-			<Button button-style="success" class="rounded-lg" :disabled="!isValid" @click="addOrder()">Guardar pedido</Button>
+			<Button button-style="success" class="rounded-lg" :disabled="!isValid || formErrors.invalid?.length === 0" @click="addOrder()">Guardar pedido</Button>
 		</div>
 	</form>
 </template>
