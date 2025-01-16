@@ -61,7 +61,7 @@ function generatePieceId() {
 	<input type="hidden" v-model="order">
 	<div class="col-span-2 flex gap-3 items-center">
 		<label for="piece_id">Nº de pedido</label>
-		<Input v-if="props.isEdit" :error="errors.id.length > 0" type="number" readonly class="rounded-lg flex-1" id="piece_id" v-model="id" />
+		<Input v-if="props.isEdit" :error="errors?.id?.length > 0" type="number" readonly class="rounded-lg flex-1" id="piece_id" v-model="id" />
 		<template v-else>
 			<div class="flex-1 flex gap-0">
 				<Input :error="errors.id.length > 0" type="number" readonly class="rounded-l-lg flex-1" id="piece_id" v-model="id" />
@@ -75,22 +75,22 @@ function generatePieceId() {
 		<div class="col-span-full grid grid-cols-3 gap-3">
 			<div class="flex gap-3 items-center">
 				<label for="piece_dimensions_length">Largo (cm)</label>
-				<Input :error="errors.dimensions.length.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_length" v-model="dimensionsLength" step="1" />
+				<Input :error="errors?.dimensions.length?.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_length" v-model="dimensionsLength" step="1" />
 			</div>
 			<div class="flex gap-3 items-center">
 				<label for="piece_dimensions_width">Ancho (cm)</label>
-				<Input :error="errors.dimensions.width.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_width"  v-model="dimensionsWidth" step="1" />
+				<Input :error="errors?.dimensions.width.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_width"  v-model="dimensionsWidth" step="1" />
 			</div>
 			<div class="flex gap-3 items-center">
 				<label for="piece_dimensions_thickness">Grosor (cm)</label>
-				<Input :error="errors.dimensions.thickness.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_thickness"  v-model="dimensionsThickness" step="1" />
+				<Input :error="errors?.dimensions.thickness.length > 0" class="rounded-lg flex-1" type="number" id="piece_dimensions_thickness"  v-model="dimensionsThickness" step="1" />
 			</div>
 		</div>
 	</div>
 
 	<div class="flex gap-3 items-center">
 		<label for="piece_color">Color chapado</label>
-		<Input :error="errors.color.length > 0" class="rounded-lg flex-1" type="text" id="piece_color" v-model="color" />
+		<Input :error="errors?.color.length > 0" class="rounded-lg flex-1" type="text" id="piece_color" v-model="color" />
 	</div>
 	
 	<div class="flex gap-3 items-center">
