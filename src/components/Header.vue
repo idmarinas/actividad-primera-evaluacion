@@ -20,12 +20,12 @@ import Portada from '@/components/icons/portada.vue'
 					<li class="flex-1"></li>
 					<li>
 						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'pieces_list' }">
-							<Pieza width="32" /> <span class="hidden md:block">Piezas</span>
+							<Pieza width="32" class="p-1" /> <span class="hidden md:block">Piezas</span>
 						</RouterLink>
 					</li>
 					<li>
 						<RouterLink class="flex gap-2 items-center px-2 border-t-4 border-b" :to="{ name: 'order_list' }">
-							<Pedidos width="32" /> <span class="hidden md:block">Pedidos</span>
+							<Pedidos width="32" class="p-1" /> <span class="hidden md:block">Pedidos</span>
 						</RouterLink>
 					</li>
 				</ul>
