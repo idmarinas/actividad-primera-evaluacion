@@ -9,7 +9,7 @@ body{
 a:not(.button) {
 	@apply text-gold-sand-600;
 
-	&:hover {
+	&:hover:not(.router-link-active) {
 		@apply text-gold-sand-700;
 	}
 }
