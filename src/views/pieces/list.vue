@@ -119,7 +119,7 @@ titleStore.title = 'Lista de piezas'
 			</template>
 
 			<template #default>
-				<select v-model="selected" class="rounded-lg">
+				<select v-model="selected" class="rounded-lg" id="select_order" aria-label="Selecciona un pedido">
 					<option disabled value="undefined">Selecciona un pedido</option>
 					<option v-for="order in ordersList" :key="order.id" :value="order.id">
 						{{ order.client }} ({{ order.id }})
