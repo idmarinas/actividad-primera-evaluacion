@@ -1,7 +1,7 @@
 <script setup>
 import { usePageTitleStore } from '@/stores/page-title'
 import { usePiecesStore } from '@/stores/pieces'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useModal } from '@/composables/common'
 
 import Button from '@/components/forms/button.vue'
@@ -14,31 +14,51 @@ import Badge from '@/components/tags/badge.vue'
 
 import Del from '@/components/forms/buttons/icons/del.vue'
 import Edit from '@/components/forms/buttons/icons/edit.vue'
+import EditIcon from '@/components/icons/edit.vue'
+import { useOrdersStore } from '@/stores/orders'
 
 const titleStore = usePageTitleStore()
 const piecesStore = usePiecesStore()
+const ordersStore = useOrdersStore()
 
-const { modal, closeModal } = useModal()
+const { modal, openModal, closeModal } = useModal()
 
 const list = computed(() => piecesStore.all())
+const ordersList = computed(() => ordersStore.all())
 
-function openModal(item) {
-		modal.value.opened = true
-		modal.value.item = item
-		modal.value.order = piecesStore.findOrderOfPiece(item.order)
-	}
+const addModal = ref({
+	opened: false,
+	item: {},
+	order: {}
+})
+
+function openAddModal() {
+	addModal.value.opened = true
+	addModal.value.item = {}
+	addModal.value.order = {}
+}
+
+function closeAddModal() {
+	addModal.value.opened = false
+	addModal.value.item = {}
+	addModal.value.order = {}
+}
 
 function deletePiece(item) {
 	piecesStore.remove(item)	
 	closeModal()
 }
 
+const selected = ref(undefined)
+
 titleStore.title = 'Lista de piezas'
 </script>
 
 <template>
 	<div class="flex flex-row justify-end">
-		<Button button-style="success" class="rounded-md inline-flex gap-2 items-center"><Add width="24" /> <span>Añadir pieza</span></Button>
+		<Button button-style="success" class="rounded-md inline-flex gap-2 items-center" @click="openAddModal()">
+			<Add width="24" /> <span>Añadir pieza</span>
+		</Button>
 	</div>
 
 	<table>
@@ -90,6 +110,39 @@ titleStore.title = 'Lista de piezas'
 
 			<template #actions>
 				<Button button-style="danger" class="rounded-md" @click="deletePiece(modal.item)">Borrar</Button>
+			</template>
+		</Modal>
+
+		<Modal :opened="addModal.opened" @close="closeAddModal">
+			<template #title>
+				¿A que pedido se le van a añadir piezas?
+			</template>
+
+			<template #default>
+				<select v-model="selected" class="rounded-lg">
+					<option disabled value="undefined">Selecciona un pedido</option>
+					<option v-for="order in ordersList" :key="order.id" :value="order.id">
+						{{ order.client }} ({{ order.id }})
+					</option>
+				</select>
+
+				<p>También se puede crear un nuevo pedido</p>
+			</template>
+
+			<template #actions>
+			<Button 
+				:disabled="selected === undefined"
+				button-style="warning"
+				class="rounded-lg" 
+				:icon="true" 
+				:as-route="selected === undefined ? undefined : { name: 'order_edit', params: { id: selected } }"
+			>
+				<EditIcon width="24" /> <span>Editar</span>
+			</Button>
+
+				<Button button-style="success" class="rounded-lg" :icon="true" :as-route="{ name: 'order_add' }">
+					<Add width="24" /> <span>Nuevo pedido</span>
+				</Button>
 			</template>
 		</Modal>
 	</Teleport>
