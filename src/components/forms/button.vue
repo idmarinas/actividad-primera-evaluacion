@@ -29,8 +29,11 @@ const props = defineProps({
 	icon: {
 		type: Boolean,
 		default: false
+	},
+	asRoute: {
+		type: Object,
+		default: undefined,
 	}
-
 })
 
 function buttonClass() {
@@ -62,5 +65,6 @@ function buttonStyle() {
 </script>
 
 <template>
-	<button :type="type" :class="buttonClass()" :disabled="disabled"><slot /></button>
+	<button v-if="asRoute === undefined" :type="type" :class="buttonClass()" :disabled="disabled"><slot /></button>
+	<RouterLink v-else :to="asRoute" class="button not-prose" :class="buttonClass()"><slot /></RouterLink>
 </template>
