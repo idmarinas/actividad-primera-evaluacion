@@ -1,0 +1,2 @@
+import{o as s,g as e,w as r,e as a,a as o,_ as n}from"./index-7ICxZEgW.js";import{T as l,E as i}from"./edit-xq2O1IL7.js";const d={__name:"del",setup(_){return(c,t)=>(s(),e(n,{"button-style":"danger",circle:!0},{default:r(()=>[a(l,{width:"24"}),t[0]||(t[0]=o("span",{class:"sr-only"},"Borrar",-1))]),_:1}))}},m={__name:"edit",setup(_){return(c,t)=>(s(),e(n,{"button-style":"yellow",circle:!0},{default:r(()=>[a(i,{width:"24"}),t[0]||(t[0]=o("span",{class:"sr-only"},"Editar",-1))]),_:1}))}};export{m as _,d as a};
+//# sourceMappingURL=edit-CkkfbRxm.js.map
