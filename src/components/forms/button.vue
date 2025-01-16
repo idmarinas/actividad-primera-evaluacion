@@ -37,7 +37,7 @@ const props = defineProps({
 })
 
 function buttonClass() {
-	return props.class + (props.circle ? ' p-1 rounded-full' : ' px-3')
+	return props.class + (props.circle ? ' p-1 rounded-full' : ' py-1 px-3')
 	+ (props.icon ? ' inline-flex items-center gap-2' : '')
 	+ ' border transition-colors duration-300 hover:ring '
 	+ buttonStyle()
