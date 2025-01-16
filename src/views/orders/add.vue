@@ -164,6 +164,14 @@ function validate() {
 				formErrors.value.pieces[index].id = []
 			}
 
+			if (typeof value.color !== 'string' || value.color.length < 3) {
+				formErrors.value.pieces[index].color = [
+					'Se debe poner un color para el chapado, por ejemplo "natural"'
+				]
+			} else {
+				formErrors.value.pieces[index].color = []
+			}
+
 			if (value.dimensions.length === undefined || !Number.isInteger(value.dimensions.length) || value.dimensions.length < 1) {
 				formErrors.value.pieces[index].dimensions.length = [
 					'El largo de la pieza tiene que estar definido ser un número entero y mayor que 0',
