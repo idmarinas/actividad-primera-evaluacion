@@ -44,7 +44,7 @@ function generatePieceId() {
 	<input type="hidden" v-model="order">
 	<div class="col-span-2 flex gap-3 items-center">
 		<label for="piece_id">Nº de pedido</label>
-		<Input v-if="props.isEdit" type="number" class="rounded-lg flex-1" id="piece_id" v-model="id" />
+		<Input v-if="props.isEdit" type="number" readonly class="rounded-lg flex-1" id="piece_id" v-model="id" />
 		<template v-else>
 			<div class="flex-1 flex gap-0">
 				<Input type="number" readonly class="rounded-l-lg flex-1" id="piece_id" v-model="id" />
